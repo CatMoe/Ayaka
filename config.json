@@ -1,0 +1,7 @@
+{
+  "server": {
+    "port": 3300,
+    "jwtkey": "cat#@moe",
+    "prefork": true
+  }
+}
