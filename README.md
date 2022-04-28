@@ -1,5 +1,12 @@
-# Ayaka
-WIP 一个原神周边(社区?)系统
+<h1 align="center">Ayaka</h1>
+
+<div align="center">
+一个WIP原神周边(社区?)系统后端
+
+![Github License](https://img.shields.io/github/license/CatMoe/Ayaka?style=for-the-badge) ![GitHub Last Commit](https://img.shields.io/github/last-commit/CatMoe/Ayaka?style=for-the-badge) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/CatMoe/Ayaka/Build?style=for-the-badge)
+
+</div>
+
 
 ```
 .
