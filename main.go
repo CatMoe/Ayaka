@@ -7,17 +7,20 @@ import (
 	"github.com/gofiber/contrib/fibersentry"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/jwt/v3"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
 	// 模块初始化阶段,注意相互依赖顺序
 	// 初始化Utils
-	utils.UtilsInit()
+	utils.LogUtilInit()
+
 	// 初始化配置文件
 	config.LoadConfig()
 
 	app := fiber.New(fiber.Config{
 		Prefork: config.PREFORK,
+		AppName: "Ayaka",
 	})
 
 	// Sentry错误处理中间件
@@ -37,5 +40,5 @@ func main() {
 	user.Post("/login", handlers.UserLoginHandler)
 	user.Post("/register", handlers.UserRegisterHandler)
 
-	utils.Log(utils.Panic, app.Listen(":"+config.PORT).Error())
+	logrus.Panic(app.Listen(":" + config.PORT))
 }

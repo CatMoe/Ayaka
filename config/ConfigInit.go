@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/CatMoe/Ayaka/utils"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
@@ -18,7 +18,8 @@ func LoadConfig() {
 	viper.SetConfigName("config")
 	err := viper.ReadInConfig()
 	if err != nil {
-		utils.Log(utils.Panic, err.Error())
+		logrus.Panic(err)
+		return
 	}
 	// 加载特定数据
 	PORT = viper.GetString("server.port")

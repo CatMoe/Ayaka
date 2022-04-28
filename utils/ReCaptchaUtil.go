@@ -5,6 +5,7 @@ import (
 	"github.com/CatMoe/Ayaka/define"
 	"github.com/gofiber/fiber/v2"
 	"github.com/json-iterator/go"
+	"github.com/sirupsen/logrus"
 )
 
 var reCaptchaUrl = "https://www.recaptcha.net/recaptcha/api/siteverify?secret=" + config.RECAPTCHA_SECRET + "&response="
@@ -14,12 +15,14 @@ func Verify(responseToken string) bool {
 	request := agent.Request()
 	request.SetRequestURI(reCaptchaUrl + responseToken)
 	if err := agent.Parse(); err != nil {
-		Log(Panic, err.Error())
+		logrus.Error(err)
+		return false
 	}
 	_, body, errs := agent.Bytes()
 	if len(errs) != 0 {
 		for _, err := range errs {
-			Log(Error, err.Error())
+			logrus.Error(err)
+			return false
 		}
 	}
 
